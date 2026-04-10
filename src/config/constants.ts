@@ -38,7 +38,13 @@ export const RESULTS_PER_PAGE = 20;
 /** Dados disponíveis por 30 dias */
 export const RESULTS_RETENTION_DAYS = 30;
 
-/** Socket.io do Backend principal (para emitir scraping-credits-updated) */
+/**
+ * Socket.io do Backend principal (para emitir scraping-credits-updated).
+ * Use URL com o mesmo esquema que o browser (https em produção pública).
+ */
 export const SOCKET_CONFIG = {
-  URL: process.env.BACKEND_SOCKET_URL || process.env.SOCKET_URL || 'http://localhost:4331',
+  URL: (process.env.BACKEND_SOCKET_URL || process.env.SOCKET_URL || 'http://localhost:4331').trim().replace(
+    /\/$/,
+    ''
+  ),
 };
