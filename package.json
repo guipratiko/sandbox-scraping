@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
-    "migrate": "ts-node-dev --transpile-only src/scripts/runMigration.ts"
+    "build": "tsc && node scripts/copySqlMigrations.cjs",
+    "migrate": "ts-node-dev --transpile-only src/scripts/runMigration.ts",
+    "migrate:prod": "node dist/scripts/runMigration.js"
   },
   "keywords": [
     "onlyflow",
